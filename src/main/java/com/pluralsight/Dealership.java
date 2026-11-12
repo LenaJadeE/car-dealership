@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class Dealership {
@@ -7,7 +8,7 @@ public class Dealership {
     private String name;
     private String address;
     private String phone;
-    private ArrayList<Vehicle> inventory;
+    private final ArrayList<Vehicle> inventory;
 
     public Dealership(String name, String address, String phone) {
         this.name = name;
@@ -40,11 +41,14 @@ public class Dealership {
         this.phone = phone;
     }
 
-    public ArrayList<Vehicle> getInventory() {
-        return inventory;
-    }
+    public ArrayList<Vehicle> getVehiclesByPrice(BigDecimal min, BigDecimal max) {
+        ArrayList<Vehicle> matches = new ArrayList<>();
 
-    public void setInventory(ArrayList<Vehicle> inventory) {
-        this.inventory = inventory;
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getPrice().compareTo(min) >= 0 && vehicle.getPrice().compareTo(max) <= 0) {
+                matches.add(vehicle);
+            }
+        }
+        return matches;
     }
 }
