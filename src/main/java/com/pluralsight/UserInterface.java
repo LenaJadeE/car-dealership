@@ -115,19 +115,26 @@ public class UserInterface {
     }
 
     private void processGetByColorRequest() {
+        String color = promptForText("Color: ");
 
+        displayVehicles(dealership.getVehiclesByColor(color));
     }
 
     private void processGetByMileageRequest() {
+        int min = promptForInt("Minimum mileage: ");
+        int max = promptForInt("Maximum mileage: ");
 
+        displayVehicles(dealership.getVehiclesByMileage(min, max));
     }
 
     private void processGetByVehicleTypeRequest() {
+        String vehicleType = promptForText("Type (car, truck, SUV, van): ");
 
+        displayVehicles(dealership.getVehiclesByType(vehicleType));
     }
 
     private void processGetAllVehiclesRequest() {
-
+        displayVehicles(dealership.getAllVehicles());
     }
 
     private void processAddVehicleRequest() {
@@ -191,9 +198,9 @@ public class UserInterface {
         return text;
     }
 
-    private int promptForInt(String s) {
+    private int promptForInt(String message) {
         while (true) {
-            System.out.print("VIN of the vehicle to remove: ");
+            System.out.print(message);
 
             try {
                 return Integer.parseInt(scanner.nextLine().trim());
