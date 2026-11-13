@@ -66,4 +66,14 @@ class DealershipTest {
         int actualCount = results.size();
         assertEquals(1, actualCount);
     }
+
+    @Test
+    void getVehiclesByYear_should_includeBothEndYears() {
+        Dealership dealership = createDealership();
+
+        ArrayList<Vehicle> results = dealership.getVehiclesByYear(2001, 2012);
+
+        int actualCount = results.size();
+        assertEquals(2, actualCount);
+    }
 }
