@@ -52,6 +52,17 @@ public class Dealership {
         return matches;
     }
 
+    public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model) {
+        ArrayList<Vehicle> matches = new ArrayList<>();
+
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getMake().equalsIgnoreCase(make) && vehicle.getModel().equalsIgnoreCase(model)) {
+                matches.add(vehicle);
+            }
+        }
+        return matches;
+    }
+
     public ArrayList<Vehicle> getAllVehicles() {
         return inventory;
     }
