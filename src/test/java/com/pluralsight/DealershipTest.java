@@ -107,4 +107,13 @@ class DealershipTest {
         assertEquals(3, actualVin);
     }
 
+    @Test
+    void getVehiclesByMileage_should_returnEmptyListWhenNothingMatches() {
+        Dealership dealership = createDealership();
+
+        ArrayList<Vehicle> results = dealership.getVehiclesByMileage(0, 1000);
+
+        int actualCount = results.size();
+        assertEquals(0, actualCount);
+    }
 }
