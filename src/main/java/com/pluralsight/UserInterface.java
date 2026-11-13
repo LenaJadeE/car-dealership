@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -38,7 +39,7 @@ public class UserInterface {
 
             switch (command) {
                 case "1":
-                    processGetByPriceRequest();
+                   // processGetByPriceRequest();
                     break;
                 case "2":
                     processGetByMakeModelRequest();
@@ -98,9 +99,12 @@ public class UserInterface {
         System.out.println(vehicles.size() + " found");
     }
 
-    private void processGetByPriceRequest() {
+    //private void processGetByPriceRequest() {
+       // BigDecimal min = promptForPrice("Minimum price: ");
+       // BigDecimal max = promptForPrice("Maximum price: ");
 
-    }
+       // displayVehicles(dealership.getVehiclesByPrice(min, max));
+   // }
 
     private void processGetByMakeModelRequest() {
 
@@ -134,4 +138,15 @@ public class UserInterface {
 
     }
 
+    private BigDecimal promptForPrice(String message) {
+        while (true) {
+            System.out.print(message);
+
+            try {
+                return new BigDecimal(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a price, like 4500 or 4499.99.");
+            }
+        }
+    }
 }
