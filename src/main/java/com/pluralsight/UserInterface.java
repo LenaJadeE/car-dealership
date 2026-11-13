@@ -74,11 +74,28 @@ public class UserInterface {
     }
 
     private void init() {
-
+        fileManager = new DealershipFileManager();
+        dealership = fileManager.getDealership();
     }
 
     private void displayVehicles(ArrayList<Vehicle> vehicles) {
         System.out.println();
+
+        if (vehicles.isEmpty()) {
+            System.out.println("No vehicles matched.");
+            return;
+        }
+
+        System.out.printf("%-7s %-5s %-12s %-14s %-7s %-8s %9s %11s%n",
+                "VIN", "Year", "Make", "Model", "Type", "Color", "Odometer", "Price");
+
+        for (Vehicle vehicle : vehicles) {
+            System.out.printf("%-7d %-5d %-12s %-14s %-7s %-8s %9d %11.2f%n",
+                    vehicle.getVin(), vehicle.getYear(), vehicle.getMake(), vehicle.getModel(),
+                    vehicle.getVehicleType(), vehicle.getColor(), vehicle.getOdometer(), vehicle.getPrice());
+        }
+
+        System.out.println(vehicles.size() + " found");
     }
 
     private void processGetByPriceRequest() {
