@@ -26,4 +26,24 @@ class DealershipTest {
         int actualCount = results.size();
         assertEquals(2, actualCount);
     }
+
+    @Test
+    void getVehiclesByPrice_should_skipVehiclesOutsideTheRange() {
+        Dealership dealership = createDealership();
+
+        ArrayList<Vehicle> results = dealership.getVehiclesByPrice(new BigDecimal("5000"), new BigDecimal("10000"));
+
+        int actualVin = results.get(0).getVin();
+        assertEquals(3, actualVin);
+    }
+
+    @Test
+    void getVehiclesByPrice_should_returnEmptyListWhenNothingMatches() {
+        Dealership dealership = createDealership();
+
+        ArrayList<Vehicle> results = dealership.getVehiclesByPrice(new BigDecimal("50000"), new BigDecimal("60000"));
+
+        int actualCount = results.size();
+        assertEquals(0, actualCount);
+    }
 }
