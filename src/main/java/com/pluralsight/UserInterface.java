@@ -32,6 +32,7 @@ public class UserInterface {
             System.out.println(" 7 - List ALL vehicles");
             System.out.println(" 8 - Add a vehicle");
             System.out.println(" 9 - Remove a vehicle");
+            System.out.println("10 - Search by make, maximum price and color");
             System.out.println("99 - Quit");
             System.out.println();
             System.out.print("Enter a command: ");
@@ -64,6 +65,9 @@ public class UserInterface {
                     break;
                 case "9":
                     processRemoveVehicleRequest();
+                    break;
+                case "10":
+                    processSearchRequest();
                     break;
                 case "99":
                     running = false;
@@ -184,6 +188,17 @@ public class UserInterface {
         System.out.println("Removed the " + vehicle.getYear() + " " + vehicle.getMake() + " " + vehicle.getModel() + ".");
     }
 
+    private void processSearchRequest() {
+        System.out.println("Leave any answer blank to skip that filter.");
+
+        String make = promptForOptionalText("Make: ");
+        BigDecimal maxPrice = promptForOptionalPrice();
+        String color = promptForOptionalText("Color: ");
+
+        displayVehicles(dealership.searchVehicles(make, maxPrice, color));
+    }
+
+
     private Vehicle findByVin(int vin) {
         for (Vehicle vehicle : dealership.getAllVehicles()) {
             if (vehicle.getVin() == vin) {
@@ -205,6 +220,28 @@ public class UserInterface {
             }
         }
         return text;
+    }
+
+    private String promptForOptionalText(String message) {
+        System.out.print(message);
+        return scanner.nextLine().trim();
+    }
+
+    private BigDecimal promptForOptionalPrice() {
+        while (true) {
+            System.out.print("Maximum price: ");
+            String text = scanner.nextLine().trim();
+
+            if (text.isEmpty()) {
+                return null;
+            }
+
+            try {
+                return new BigDecimal(text);
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a price, like 4500 or 4499.99, or leave it blank.");
+            }
+        }
     }
 
     private int promptForInt(String message) {
