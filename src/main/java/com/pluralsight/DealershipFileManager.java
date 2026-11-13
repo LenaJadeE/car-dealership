@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 
 public class DealershipFileManager {
@@ -30,9 +31,25 @@ public class DealershipFileManager {
                 if (fields.length != 8) {
                     continue;
                 }
-            }
-        } catch (NumberFormatException e) {
 
+                try {
+                    int vin = Integer.parseInt(fields[0]);
+                    int year = Integer.parseInt(fields[1]);
+                    String make = fields[2];
+                    String model = fields[3];
+                    String vehicleType = fields[4];
+                    String color = fields[5];
+                    int odometer = Integer.parseInt(fields[6]);
+                    BigDecimal price = new BigDecimal(fields[7]);
+
+                    dealership.addVehicle(new Vehicle(vin, year, make, model, vehicleType, color, odometer, price));
+
+                } catch (NumberFormatException e) {
+                    System.out.println("Skipped a vehicle line with a bad number: " + input);
+                }
+            }
+
+            bufReader.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
