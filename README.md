@@ -15,6 +15,7 @@ A console application for a used car dealership sales manager. It loads the deal
 | 7 | List all vehicles |
 | 8 | Add a vehicle |
 | 9 | Remove a vehicle |
+| 10 | Search by make, maximum price and color (leave any answer blank to skip that filter) |
 | 99 | Quit |
 
 ## Classes
@@ -35,6 +36,10 @@ D & B Used Cars|111 Old Benbrook Rd|817-555-5555
 ```
 
 Vehicle fields are `vin|year|make|model|type|color|odometer|price`. `inventory-backup.csv` is a copy of the starting data.
+
+## Tests
+
+`DealershipTest` has JUnit 6 tests for every `Dealership` search method, including the range limits, capital letters, empty results, and the multi-filter search. Run it from IntelliJ by right-clicking `DealershipTest` and choosing Run.
 
 ## Run it
 
