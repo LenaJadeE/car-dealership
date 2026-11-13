@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class UserInterface {
 
     private Dealership dealership;
-    private DealershipFileManager fileManager;
     private final Scanner scanner;
 
     public UserInterface() {
@@ -75,7 +74,7 @@ public class UserInterface {
     }
 
     private void init() {
-        fileManager = new DealershipFileManager();
+        DealershipFileManager fileManager = new DealershipFileManager();
         dealership = fileManager.getDealership();
     }
 
@@ -136,6 +135,20 @@ public class UserInterface {
 
     private void processRemoveVehicleRequest() {
 
+    }
+
+    private String promptForText(String message) {
+        String text = "";
+
+        while (text.isEmpty()) {
+            System.out.print(message);
+            text = scanner.nextLine().trim();
+
+            if (text.isEmpty()) {
+                System.out.println("Please type something.");
+            }
+        }
+        return text;
     }
 
     private int promptForInt(String message) {
