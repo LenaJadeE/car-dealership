@@ -126,4 +126,14 @@ class DealershipTest {
         int actualCount = results.size();
         assertEquals(2, actualCount);
     }
+
+    @Test
+    void searchVehicles_should_returnEmptyListWhenFiltersCannotAllMatch() {
+        Dealership dealership = createDealership();
+
+        ArrayList<Vehicle> results = dealership.searchVehicles("Honda", new BigDecimal("2000"), "");
+
+        int actualCount = results.size();
+        assertEquals(0, actualCount);
+    }
 }
