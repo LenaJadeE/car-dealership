@@ -131,7 +131,26 @@ public class UserInterface {
     }
 
     private void processAddVehicleRequest() {
+        int vin = promptForInt("VIN: ");
 
+        if (findByVin(vin) != null) {
+            System.out.println("A vehicle with VIN " + vin + " is already in the inventory.");
+            return;
+        }
+
+        int year = promptForInt("Year: ");
+        String make = promptForText("Make: ");
+        String model = promptForText("Model: ");
+        String vehicleType = promptForText("Type (car, truck, SUV, van): ");
+        String color = promptForText("Color: ");
+        int odometer = promptForInt("Odometer: ");
+        BigDecimal price = promptForPrice("Price: ");
+
+        Vehicle vehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
+        dealership.addVehicle(vehicle);
+        fileManager.saveDealership(dealership);
+
+        System.out.println("Added the " + year + " " + make + " " + model + ".");
     }
 
     private void processRemoveVehicleRequest() {
