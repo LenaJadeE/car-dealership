@@ -96,4 +96,15 @@ class DealershipTest {
         int actualCount = results.size();
         assertEquals(2, actualCount);
     }
+
+    @Test
+    void getVehiclesByColor_should_ignoreCapitals() {
+        Dealership dealership = createDealership();
+
+        ArrayList<Vehicle> results = dealership.getVehiclesByColor("gRaY");
+
+        int actualVin = results.get(0).getVin();
+        assertEquals(3, actualVin);
+    }
+
 }
