@@ -1,9 +1,6 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.math.BigDecimal;
 
 
@@ -54,5 +51,25 @@ public class DealershipFileManager {
             System.out.println("Could not read " + FILE_NAME + ".");
         }
         return dealership;
+    }
+
+    public void saveDealership(Dealership dealership) {
+        try {
+            BufferedWriter bufWriter = new BufferedWriter(new FileWriter(FILE_NAME));
+
+            bufWriter.write(dealership.getName() + "|" + dealership.getAddress() + "|" + dealership.getPhone() + "\n");
+
+            for (Vehicle vehicle : dealership.getAllVehicles()) {
+                String line = vehicle.getVin() + "|" + vehicle.getYear() + "|" + vehicle.getMake() + "|"
+                        + vehicle.getModel() + "|" + vehicle.getVehicleType() + "|" + vehicle.getColor() + "|"
+                        + vehicle.getOdometer() + "|" + String.format("%.2f", vehicle.getPrice());
+
+                bufWriter.write(line + "\n");
+            }
+
+            bufWriter.close();
+        } catch (IOException e) {
+            System.out.println("Could not save " + FILE_NAME + ".");
+        }
     }
 }
