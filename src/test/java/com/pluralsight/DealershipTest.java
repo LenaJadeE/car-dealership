@@ -86,4 +86,14 @@ class DealershipTest {
         int actualCount = results.size();
         assertEquals(0, actualCount);
     }
+
+    @Test
+    void getVehiclesByColor_should_findEveryVehicleOfThatColor() {
+        Dealership dealership = createDealership();
+
+        ArrayList<Vehicle> results = dealership.getVehiclesByColor("Red");
+
+        int actualCount = results.size();
+        assertEquals(2, actualCount);
+    }
 }
