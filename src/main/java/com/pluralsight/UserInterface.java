@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class UserInterface {
 
     private Dealership dealership;
+    private DealershipFileManager fileManager;
     private final Scanner scanner;
 
     public UserInterface() {
@@ -74,7 +75,7 @@ public class UserInterface {
     }
 
     private void init() {
-        DealershipFileManager fileManager = new DealershipFileManager();
+        fileManager = new DealershipFileManager();
         dealership = fileManager.getDealership();
     }
 
@@ -134,7 +135,18 @@ public class UserInterface {
     }
 
     private void processRemoveVehicleRequest() {
+        int vin = promptForInt("VIN of the vehicle to remove: ");
+        Vehicle vehicle = findByVin(vin);
 
+        if (vehicle == null) {
+            System.out.println("No vehicle has the VIN " + vin + ".");
+            return;
+        }
+
+        dealership.removeVehicle(vehicle);
+        fileManager.saveDealership(dealership);
+
+        System.out.println("Removed the " + vehicle.getYear() + " " + vehicle.getMake() + " " + vehicle.getModel() + ".");
     }
 
     private Vehicle findByVin(int vin) {
@@ -160,9 +172,9 @@ public class UserInterface {
         return text;
     }
 
-    private int promptForInt(String message) {
+    private int promptForInt(String s) {
         while (true) {
-            System.out.print(message);
+            System.out.print("VIN of the vehicle to remove: ");
 
             try {
                 return Integer.parseInt(scanner.nextLine().trim());
