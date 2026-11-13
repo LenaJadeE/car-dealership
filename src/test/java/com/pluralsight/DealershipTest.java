@@ -46,4 +46,14 @@ class DealershipTest {
         int actualCount = results.size();
         assertEquals(0, actualCount);
     }
+
+    @Test
+    void getVehiclesByMakeModel_should_matchBothMakeAndModel() {
+        Dealership dealership = createDealership();
+
+        ArrayList<Vehicle> results = dealership.getVehiclesByMakeModel("Ford", "Ranger");
+
+        int actualVin = results.get(0).getVin();
+        assertEquals(2, actualVin);
+    }
 }
