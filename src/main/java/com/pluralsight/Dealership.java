@@ -11,9 +11,9 @@ public class Dealership {
     private final ArrayList<Vehicle> inventory;
 
     public Dealership(String name, String address, String phone) {
-        this.name = name;
-        this.address = address;
-        this.phone = phone;
+        setName(name);
+        setAddress(address);
+        setPhone(phone);
         this.inventory = new ArrayList<>();
     }
 

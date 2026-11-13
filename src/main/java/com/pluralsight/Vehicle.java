@@ -3,6 +3,7 @@ package com.pluralsight;
 import java.math.BigDecimal;
 
 public class Vehicle {
+
     private int vin;
     private int year;
     private String make;
@@ -13,14 +14,14 @@ public class Vehicle {
     private BigDecimal price;
 
     public Vehicle(int vin, int year, String make, String model, String vehicleType, String color, int odometer, BigDecimal price) {
-        this.vin = vin;
-        this.year = year;
-        this.make = make;
-        this.model = model;
-        this.vehicleType = vehicleType;
-        this.color = color;
-        this.odometer = odometer;
-        this.price = price;
+        setVin(vin);
+        setYear(year);
+        setMake(make);
+        setModel(model);
+        setVehicleType(vehicleType);
+        setColor(color);
+        setOdometer(odometer);
+        setPrice(price);
     }
 
     public int getVin() {
