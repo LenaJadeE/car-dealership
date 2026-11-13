@@ -56,4 +56,14 @@ class DealershipTest {
         int actualVin = results.get(0).getVin();
         assertEquals(2, actualVin);
     }
+
+    @Test
+    void getVehiclesByMakeModel_should_ignoreCapitals() {
+        Dealership dealership = createDealership();
+
+        ArrayList<Vehicle> results = dealership.getVehiclesByMakeModel("honda", "CIVIC");
+
+        int actualCount = results.size();
+        assertEquals(1, actualCount);
+    }
 }
