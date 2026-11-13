@@ -72,6 +72,9 @@ public class UserInterface {
                     System.out.println("That is not a command. Enter a number from the menu.");
             }
         }
+
+        System.out.println("Goodbye!");
+        scanner.close();
     }
 
     private void init() {
@@ -107,11 +110,17 @@ public class UserInterface {
     }
 
     private void processGetByMakeModelRequest() {
+        String make = promptForText("Make: ");
+        String model = promptForText("Model: ");
 
+        displayVehicles(dealership.getVehiclesByMakeModel(make, model));
     }
 
     private void processGetByYearRequest() {
+        int min = promptForInt("Earliest year: ");
+        int max = promptForInt("Latest year: ");
 
+        displayVehicles(dealership.getVehiclesByYear(min, max));
     }
 
     private void processGetByColorRequest() {
