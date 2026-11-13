@@ -137,6 +137,15 @@ public class UserInterface {
 
     }
 
+    private Vehicle findByVin(int vin) {
+        for (Vehicle vehicle : dealership.getAllVehicles()) {
+            if (vehicle.getVin() == vin) {
+                return vehicle;
+            }
+        }
+        return null;
+    }
+
     private String promptForText(String message) {
         String text = "";
 
