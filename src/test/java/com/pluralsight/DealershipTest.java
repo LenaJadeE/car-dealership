@@ -116,4 +116,14 @@ class DealershipTest {
         int actualCount = results.size();
         assertEquals(0, actualCount);
     }
+
+    @Test
+    void getVehiclesByType_should_findEveryVehicleOfThatType() {
+        Dealership dealership = createDealership();
+
+        ArrayList<Vehicle> results = dealership.getVehiclesByType("car");
+
+        int actualCount = results.size();
+        assertEquals(2, actualCount);
+    }
 }
