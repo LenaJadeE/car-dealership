@@ -107,6 +107,21 @@ public class Dealership {
         return matches;
     }
 
+    public ArrayList<Vehicle> searchVehicles(String make, BigDecimal maxPrice, String color) {
+        ArrayList<Vehicle> matches = new ArrayList<>();
+
+        for (Vehicle vehicle : inventory) {
+            boolean makeMatches = make.isEmpty() || vehicle.getMake().equalsIgnoreCase(make);
+            boolean priceMatches = maxPrice == null || vehicle.getPrice().compareTo(maxPrice) <= 0;
+            boolean colorMatches = color.isEmpty() || vehicle.getColor().equalsIgnoreCase(color);
+
+            if (makeMatches && priceMatches && colorMatches) {
+                matches.add(vehicle);
+            }
+        }
+        return matches;
+    }
+
     public ArrayList<Vehicle> getAllVehicles() {
         return inventory;
     }
