@@ -51,4 +51,12 @@ public class Dealership {
         }
         return matches;
     }
+
+    public ArrayList<Vehicle> getAllVehicles() {
+        return inventory;
+    }
+
+    public void addVehicle(Vehicle vehicle) {
+        inventory.add(vehicle);
+    }
 }
