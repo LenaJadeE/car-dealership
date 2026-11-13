@@ -39,7 +39,7 @@ public class UserInterface {
 
             switch (command) {
                 case "1":
-                   // processGetByPriceRequest();
+                    processGetByPriceRequest();
                     break;
                 case "2":
                     processGetByMakeModelRequest();
@@ -99,12 +99,12 @@ public class UserInterface {
         System.out.println(vehicles.size() + " found");
     }
 
-    //private void processGetByPriceRequest() {
-       // BigDecimal min = promptForPrice("Minimum price: ");
-       // BigDecimal max = promptForPrice("Maximum price: ");
+    private void processGetByPriceRequest() {
+        BigDecimal min = promptForPrice("Minimum price: ");
+        BigDecimal max = promptForPrice("Maximum price: ");
 
-       // displayVehicles(dealership.getVehiclesByPrice(min, max));
-   // }
+        displayVehicles(dealership.getVehiclesByPrice(min, max));
+    }
 
     private void processGetByMakeModelRequest() {
 
