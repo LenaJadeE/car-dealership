@@ -136,4 +136,14 @@ class DealershipTest {
         int actualCount = results.size();
         assertEquals(0, actualCount);
     }
+
+    @Test
+    void searchVehicles_should_requireEveryFilterThatIsFilledIn() {
+        Dealership dealership = createDealership();
+
+        ArrayList<Vehicle> results = dealership.searchVehicles("Ford", new BigDecimal("2000"), "Red");
+
+        int actualVin = results.get(0).getVin();
+        assertEquals(1, actualVin);
+    }
 }
