@@ -34,9 +34,6 @@ The code is in `com.pluralsight.dealershipmanager`, sorted by the job each class
 ```text
 car-dealership
 ├── pom.xml
-├── Inventory
-│   ├── inventory.csv
-│   └── inventory-backup.csv
 ├── contracts.csv
 └── src
     ├── main/java/com/pluralsight/dealershipmanager
