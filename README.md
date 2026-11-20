@@ -101,3 +101,7 @@ The fields are the type, the date, the customer's name and email, the vehicle's 
 ## Run it
 
 Run `Program.main()` from IntelliJ with the project folder as the working directory, so `inventory.csv` is found.
+
+## Diagram
+
+![Diagram.png](Diagram.png)
