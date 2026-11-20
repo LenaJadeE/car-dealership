@@ -238,7 +238,7 @@ public class UserInterface {
 
         Contract contract;
         if (choice.equalsIgnoreCase("s")) {
-            boolean financed = promptForYesNo("Finance it (y/n): ");
+            boolean financed = promptForYesNo();
             contract = new SalesContract(date, customerName, customerEmail, vehicle, financed);
         } else {
             contract = new LeaseContract(date, customerName, customerEmail, vehicle);
@@ -277,11 +277,11 @@ public class UserInterface {
         return text;
     }
 
-    private boolean promptForYesNo(String message) {
+    private boolean promptForYesNo() {
         String answer = "";
 
         while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n")) {
-            answer = promptForText(message);
+            answer = promptForText("Finance it (y/n): ");
         }
         return answer.equalsIgnoreCase("y");
     }
