@@ -16,6 +16,7 @@ A console application for a used car dealership sales manager. It loads the deal
 | 8 | Add a vehicle |
 | 9 | Remove a vehicle |
 | 10 | Search by make, maximum price and color (leave any answer blank to skip that filter) |
+| 11 | Sell or lease a vehicle |
 | 99 | Quit |
 
 ## Selling or leasing a vehicle
@@ -34,6 +35,9 @@ The code is in `com.pluralsight.dealershipmanager`, sorted by the job each class
 ```text
 car-dealership
 ├── pom.xml
+├── README.md
+├── inventory.csv
+├── inventory-backup.csv
 ├── contracts.csv
 └── src
     ├── main/java/com/pluralsight/dealershipmanager
@@ -50,7 +54,7 @@ car-dealership
     │   │   └── ContractDataManager.java
     │   └── ui
     │       └── UserInterface.java
-    └── test/java/com/pluralsight
+    └── test/java/com/pluralsight/dealershipmanager/model
         └── DealershipTest.java
 ```
 
@@ -79,6 +83,16 @@ D & B Used Cars|111 Old Benbrook Rd|817-555-5555
 ```
 
 Vehicle fields are `vin|year|make|model|type|color|odometer|price`. `inventory-backup.csv` is a copy of the starting data.
+
+## Contracts file
+
+`contracts.csv` gets one line added every time a vehicle is sold or leased. A sale looks like this:
+
+```text
+SALE|20261120|Ana Cruz|ana@mail.com|51234|2019|Toyota|Camry|car|Blue|45210|18995.00|949.75|100.00|495.00|20539.75|YES|466.07
+```
+
+The fields are the type, the date, the customer's name and email, the vehicle's details, and then the sales tax, recording fee, processing fee, total price, whether it is financed, and the monthly payment. A lease has the expected ending value, the lease fee, the total price and the monthly payment after the vehicle's details.
 
 ## Tests
 
