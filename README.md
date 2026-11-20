@@ -74,14 +74,14 @@ car-dealership
 
 ## Inventory file
 
-`Inventory/inventory.csv` is pipe-delimited. The first line is the dealership, every other line is a vehicle:
+`inventory.csv` is pipe-delimited. The first line is the dealership, every other line is a vehicle:
 
 ```
 D & B Used Cars|111 Old Benbrook Rd|817-555-5555
 10112|1993|Ford|Explorer|SUV|Red|525123|995.00
 ```
 
-Vehicle fields are `vin|year|make|model|type|color|odometer|price`. `Inventory/inventory-backup.csv` is a copy of the starting data.
+Vehicle fields are `vin|year|make|model|type|color|odometer|price`. `inventory-backup.csv` is a copy of the starting data.
 
 ## Tests
 
@@ -89,4 +89,4 @@ Vehicle fields are `vin|year|make|model|type|color|odometer|price`. `Inventory/i
 
 ## Run it
 
-Run `Program.main()` from IntelliJ with the project folder as the working directory, so `Inventory/inventory.csv` is found.
+Run `Program.main()` from IntelliJ with the project folder as the working directory, so `inventory.csv` is found.
