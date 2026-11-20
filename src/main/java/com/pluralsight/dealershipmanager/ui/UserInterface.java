@@ -12,6 +12,7 @@ public class UserInterface {
 
     private Dealership dealership;
     private DealershipFileManager fileManager;
+    private ContractDataManager contractDataManager;
     private final Scanner scanner;
 
     public UserInterface() {
