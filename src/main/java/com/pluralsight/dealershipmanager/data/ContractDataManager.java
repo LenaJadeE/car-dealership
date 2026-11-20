@@ -14,6 +14,18 @@ public class ContractDataManager {
     private static final String FILE_NAME = "contracts.csv";
 
     public void saveContract(Contract contract) {
+        String line = buildLine(contract);
+
+        try {
+            BufferedWriter bufWriter = new BufferedWriter(new FileWriter(FILE_NAME, true));
+            bufWriter.write(line + "\n");
+            bufWriter.close();
+        } catch (IOException e) {
+            System.out.println("Could not save " + FILE_NAME + ".");
+        }
+    }
+
+    private String buildLine(Contract contract) {
         Vehicle vehicle = contract.getVehicleSold();
         String date = contract.getContractDate().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
         String start = date + "|" + contract.getCustomerName() + "|" + contract.getCustomerEmail() + "|"
@@ -38,12 +50,6 @@ public class ContractDataManager {
                     + String.format("%.2f", lease.getMonthlyPayment());
         }
 
-        try {
-            BufferedWriter bufWriter = new BufferedWriter(new FileWriter(FILE_NAME, true));
-            bufWriter.write(line + "\n");
-            bufWriter.close();
-        } catch (IOException e) {
-            System.out.println("Could not save " + FILE_NAME + ".");
-        }
+        return line;
     }
 }
