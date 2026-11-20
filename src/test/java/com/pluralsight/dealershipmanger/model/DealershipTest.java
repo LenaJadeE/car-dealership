@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.dealershipmanger.model;
 
 import com.pluralsight.dealershipmanager.model.Dealership;
 import com.pluralsight.dealershipmanager.model.Vehicle;
