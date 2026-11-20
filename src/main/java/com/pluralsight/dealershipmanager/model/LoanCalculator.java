@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 
 public class LoanCalculator {
 
-    private LoanCalculator () {
+    private LoanCalculator() {
     }
 
     public static BigDecimal monthlyPayment(BigDecimal loanAmount, double yearlyRatePercent, int months) {
