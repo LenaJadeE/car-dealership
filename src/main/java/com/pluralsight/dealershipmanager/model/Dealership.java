@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.dealershipmanager.model;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

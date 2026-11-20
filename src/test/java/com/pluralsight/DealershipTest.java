@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import com.pluralsight.dealershipmanager.model.Dealership;
+import com.pluralsight.dealershipmanager.model.Vehicle;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
