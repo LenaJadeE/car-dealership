@@ -1,4 +1,4 @@
-package com.pluralsight.dealershipmanager.model;
+package com.pluralsight.dealershipmanger.model;
 
 import org.junit.jupiter.api.Test;
 

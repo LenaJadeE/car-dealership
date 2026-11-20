@@ -1,12 +1,12 @@
-package com.pluralsight.dealershipmanager.ui;
+package com.pluralsight.dealershipmanger.ui;
 
-import com.pluralsight.dealershipmanager.data.ContractDataManager;
-import com.pluralsight.dealershipmanager.data.DealershipFileManager;
-import com.pluralsight.dealershipmanager.model.Contract;
-import com.pluralsight.dealershipmanager.model.Dealership;
-import com.pluralsight.dealershipmanager.model.LeaseContract;
-import com.pluralsight.dealershipmanager.model.SalesContract;
-import com.pluralsight.dealershipmanager.model.Vehicle;
+import com.pluralsight.dealershipmanger.data.ContractDataManager;
+import com.pluralsight.dealershipmanger.data.DealershipFileManager;
+import com.pluralsight.dealershipmanger.model.Contract;
+import com.pluralsight.dealershipmanger.model.Dealership;
+import com.pluralsight.dealershipmanger.model.LeaseContract;
+import com.pluralsight.dealershipmanger.model.SalesContract;
+import com.pluralsight.dealershipmanger.model.Vehicle;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

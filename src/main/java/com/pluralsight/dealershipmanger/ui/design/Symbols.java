@@ -1,4 +1,4 @@
-package com.pluralsight.dealershipmanager.ui.design;
+package com.pluralsight.dealershipmanger.ui.design;
 
 public class Symbols
 {

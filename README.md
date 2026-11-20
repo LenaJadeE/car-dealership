@@ -30,7 +30,7 @@ After it shows the total price and the monthly payment, the app saves the contra
 
 ## Project structure
 
-The code is in `com.pluralsight.dealershipmanager`, sorted by the job each class does.
+The code is in `dealershipmanger`, sorted by the job each class does.
 
 ```text
 car-dealership
@@ -40,7 +40,7 @@ car-dealership
 ├── inventory-backup.csv
 ├── contracts.csv
 └── src
-    ├── main/java/com/pluralsight/dealershipmanager
+    ├── main/java/com/pluralsight/dealershipmanger
     │   ├── Program.java
     │   ├── model
     │   │   ├── Vehicle.java
@@ -54,8 +54,10 @@ car-dealership
     │   │   └── ContractDataManager.java
     │   └── ui
     │       └── UserInterface.java
-    └── test/java/com/pluralsight/dealershipmanager/model
-        └── DealershipTest.java
+    └── test/java/com/pluralsight/dealershipmanger/model
+        ├── DealershipTest.java
+        ├── SalesContractTest.java
+        └── LeaseContractTest.java
 ```
 
 ## Classes
