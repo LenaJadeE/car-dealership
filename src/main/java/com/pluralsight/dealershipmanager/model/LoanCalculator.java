@@ -8,7 +8,7 @@ public class LoanCalculator {
     private LoanCalculator () {
     }
 
-    private static BigDecimal monthlyPayment(BigDecimal loanAmount, double yearlyRatePercent, int months) {
+    public static BigDecimal monthlyPayment(BigDecimal loanAmount, double yearlyRatePercent, int months) {
         double monthlyRate = yearlyRatePercent / 100 / 12;
         double payment = loanAmount.doubleValue() * monthlyRate / (1 - Math.pow(1 + monthlyRate, -months));
 
