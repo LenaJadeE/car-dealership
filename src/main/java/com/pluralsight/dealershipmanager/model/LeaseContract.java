@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 
-public class LeaseContract extends Contract{
+public class LeaseContract extends Contract {
 
     private BigDecimal expectedEndingValue;
     private BigDecimal leaseFee;
