@@ -2,10 +2,14 @@ package com.pluralsight.dealershipmanager.ui;
 
 import com.pluralsight.dealershipmanager.data.ContractDataManager;
 import com.pluralsight.dealershipmanager.data.DealershipFileManager;
+import com.pluralsight.dealershipmanager.model.Contract;
 import com.pluralsight.dealershipmanager.model.Dealership;
+import com.pluralsight.dealershipmanager.model.LeaseContract;
+import com.pluralsight.dealershipmanager.model.SalesContract;
 import com.pluralsight.dealershipmanager.model.Vehicle;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -39,6 +43,7 @@ public class UserInterface {
             System.out.println(" 8 - Add a vehicle");
             System.out.println(" 9 - Remove a vehicle");
             System.out.println("10 - Search by make, maximum price and color");
+            System.out.println("11 - Sell or lease a vehicle");
             System.out.println("99 - Quit");
             System.out.println();
             System.out.print("Enter a command: ");
@@ -75,6 +80,9 @@ public class UserInterface {
                 case "10":
                     processSearchRequest();
                     break;
+                case "11":
+                    processSellOrLeaseRequest();
+                    break;
                 case "99":
                     running = false;
                     break;
@@ -89,6 +97,7 @@ public class UserInterface {
 
     private void init() {
         fileManager = new DealershipFileManager();
+        contractDataManager = new ContractDataManager();
         dealership = fileManager.getDealership();
     }
 
@@ -204,6 +213,46 @@ public class UserInterface {
         displayVehicles(dealership.searchVehicles(make, maxPrice, color));
     }
 
+    private void processSellOrLeaseRequest() {
+        int vin = promptForInt("VIN of the vehicle: ");
+        Vehicle vehicle = findByVin(vin);
+
+        if (vehicle == null) {
+            System.out.println("No vehicle has the VIN " + vin + ".");
+            return;
+        }
+        String choice = "";
+        while (!choice.equalsIgnoreCase("s") && !choice.equalsIgnoreCase("l")) {
+            choice = promptForText("Sale or lease (s/l): ");
+        }
+
+        int age = LocalDate.now().getYear() - vehicle.getYear();
+        if (choice.equalsIgnoreCase("l") && age > 3) {
+            System.out.println("A vehicle over 3 years old can't be leased.");
+            return;
+        }
+
+        String customerName = promptForText("Customer name: ");
+        String customerEmail = promptForText("Customer email: ");
+        LocalDate date = LocalDate.now();
+
+        Contract contract;
+        if (choice.equalsIgnoreCase("s")) {
+            boolean financed = promptForYesNo("Finance it (y/n): ");
+            contract = new SalesContract(date, customerName, customerEmail, vehicle, financed);
+        } else {
+            contract = new LeaseContract(date, customerName, customerEmail, vehicle);
+        }
+
+        contractDataManager.saveContract(contract);
+        dealership.removeVehicle(vehicle);
+        fileManager.saveDealership(dealership);
+
+        System.out.println();
+        System.out.println("Contract saved for " + customerName + ".");
+        System.out.printf("Total price: $%,.2f%n", contract.getTotalPrice());
+        System.out.printf("Monthly payment: $%,.2f%n", contract.getMonthlyPayment());
+    }
 
     private Vehicle findByVin(int vin) {
         for (Vehicle vehicle : dealership.getAllVehicles()) {
@@ -226,6 +275,15 @@ public class UserInterface {
             }
         }
         return text;
+    }
+
+    private boolean promptForYesNo(String message) {
+        String answer = "";
+
+        while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n")) {
+            answer = promptForText(message);
+        }
+        return answer.equalsIgnoreCase("y");
     }
 
     private String promptForOptionalText(String message) {
