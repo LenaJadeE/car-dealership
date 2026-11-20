@@ -1,5 +1,6 @@
 package com.pluralsight.dealershipmanager.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public abstract class Contract {
@@ -48,4 +49,7 @@ public abstract class Contract {
         this.vehicleSold = vehicleSold;
     }
 
+    public abstract BigDecimal getTotalPrice();
+
+    public abstract BigDecimal getMonthlyPayment();
 }
