@@ -1,9 +1,9 @@
-package com.pluralsight.dealershipmanger.data;
+package com.pluralsight.dealershipmanager.data;
 
-import com.pluralsight.dealershipmanger.model.Contract;
-import com.pluralsight.dealershipmanger.model.LeaseContract;
-import com.pluralsight.dealershipmanger.model.SalesContract;
-import com.pluralsight.dealershipmanger.model.Vehicle;
+import com.pluralsight.dealershipmanager.model.Contract;
+import com.pluralsight.dealershipmanager.model.LeaseContract;
+import com.pluralsight.dealershipmanager.model.SalesContract;
+import com.pluralsight.dealershipmanager.model.Vehicle;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
